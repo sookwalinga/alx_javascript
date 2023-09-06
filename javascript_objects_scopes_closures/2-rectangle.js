@@ -1,5 +1,5 @@
 #!/usr/bin/node
-// 2-rectangle.js
+
 class Rectangle {
   constructor(w, h) {
     if (
@@ -10,7 +10,7 @@ class Rectangle {
       !Number.isInteger(w) ||
       !Number.isInteger(h)
     ) {
-      return {}
+      return
     }
 
     this.width = w
