@@ -7,5 +7,3 @@ function welcome(firstName, lastName) {
 
   displayFullName()
 }
-
-welcome('John', 'Doe')
