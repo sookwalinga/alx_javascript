@@ -8,7 +8,25 @@ if (process.argv.length !== 3) {
 const apiUrl = process.argv[2]
 const characterId = 18
 
-request.get(apiUrl, (error, response, body) => {
+function fetchCharacter(characterId) {
+  return new Promise((resolve, reject) => {
+    const characterUrl = `https://swapi-api.alx-tools.com/api/people/${characterId}/`
+    request.get(characterUrl, (error, response, body) => {
+      if (error) {
+        reject(error)
+      } else if (response.statusCode !== 200) {
+        reject(
+          new Error(`Request failed with status code: ${response.statusCode}`)
+        )
+      } else {
+        const character = JSON.parse(body)
+        resolve(character)
+      }
+    })
+  })
+}
+
+request.get(apiUrl, async (error, response, body) => {
   if (error) {
     console.error(`Error: ${error.message}`)
     process.exit(1)
@@ -21,10 +39,10 @@ request.get(apiUrl, (error, response, body) => {
 
   try {
     const movies = JSON.parse(body).results
+    const character = await fetchCharacter(characterId)
+
     const moviesWithWedgeAntilles = movies.filter((movie) =>
-      movie.characters.includes(
-        `https://swapi-api.alx-tools.com/api/people/${characterId}/`
-      )
+      movie.characters.includes(character.url)
     )
 
     console.log(moviesWithWedgeAntilles.length)
