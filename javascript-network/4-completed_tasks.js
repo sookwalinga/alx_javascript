@@ -1,7 +1,7 @@
 const request = require('request')
 
 if (process.argv.length !== 3) {
-  console.error('Usage: node count-completed-tasks.js <API URL>')
+  console.error('Usage: node 4-completed_tasks.js <API URL>')
   process.exit(1)
 }
 
@@ -21,21 +21,19 @@ request.get(apiUrl, (error, response, body) => {
   try {
     const todos = JSON.parse(body)
 
-    const completedTasksByUser = todos.reduce((acc, todo) => {
-      if (todo.completed) {
-        if (!acc[todo.userId]) {
-          acc[todo.userId] = 0
-        }
-        acc[todo.userId]++
-      }
-      return acc
-    }, {})
+    const completedTasksByUser = {}
 
-    for (const userId in completedTasksByUser) {
-      console.log(
-        `User ${userId}: ${completedTasksByUser[userId]} completed tasks`
-      )
-    }
+    todos.forEach((todo) => {
+      if (todo.completed) {
+        if (!completedTasksByUser[todo.userId]) {
+          completedTasksByUser[todo.userId] = 1
+        } else {
+          completedTasksByUser[todo.userId]++
+        }
+      }
+    })
+
+    console.log(completedTasksByUser)
   } catch (parseError) {
     console.error('Error parsing API response:', parseError.message)
     process.exit(1)
