@@ -2,12 +2,13 @@ const request = require('request')
 const fs = require('fs')
 
 if (process.argv.length !== 4) {
-  console.error('Usage: node fetch-and-store.js <URL> <file path>')
+  console.error('Usage: node 3-request_store.js <URL> <file path>')
   process.exit(1)
 }
 
 const url = process.argv[2]
 const filePath = process.argv[3]
+const encoding = 'utf-8'
 
 request.get(url, (error, response, body) => {
   if (error) {
@@ -20,7 +21,7 @@ request.get(url, (error, response, body) => {
     process.exit(1)
   }
 
-  fs.writeFile(filePath, body, 'utf-8', (writeError) => {
+  fs.writeFile(filePath, body, encoding, (writeError) => {
     if (writeError) {
       console.error(`Error writing to file: ${writeError.message}`)
       process.exit(1)
