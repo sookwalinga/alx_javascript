@@ -1,16 +1,16 @@
 ### JavaScript - Warm up
 
 1. How to create variables and constants:
-   Variables are declared using `var`, `let`, or `const` keywords in JavaScript. Constants are declared using `const`. Example:
+   Variables are declared using `let`, `let`, or `const` keywords in JavaScript. Constants are declared using `const`. Example:
 
    ```javascript
-   var age = 25
+   let age = 25
    const pi = 3.14159
    ```
 
-1. What are differences between var, const, and let:
+1. What are differences between let, const, and let:
 
-   - `var` has function scope and can be redeclared within the same scope.
+   - `let` has function scope and can be redeclared within the same scope.
    - `const` and `let` have block scope and cannot be redeclared, but `const` values are immutable, while `let` values can be changed.
 
 1. What are all the data types available in JavaScript:
@@ -34,7 +34,7 @@
    You can assign values to variables using the `=` operator. Example:
 
    ```javascript
-   var name = 'John'
+   let name = 'John'
    ```
 
 1. How to use while and for loops:

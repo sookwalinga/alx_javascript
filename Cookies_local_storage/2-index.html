@@ -21,11 +21,11 @@
 
         <script>
             function setCookies() {
-                var firstName = document.getElementById("firstname").value
-                var email = document.getElementById("email").value
+                let firstName = document.getElementById("firstname").value
+                let email = document.getElementById("email").value
 
 
-                var expirationDate = new Date()
+                let expirationDate = new Date()
                 expirationDate.setDate(expirationDate.getDate() + 10)
 
 
@@ -34,9 +34,9 @@
             }
 
             function getCookie(name) {
-                var cookies = document.cookie.split("; ")
-                for (var i = 0; i < cookies.length; i++) {
-                    var cookie = cookies[i].split("=")
+                let cookies = document.cookie.split("; ")
+                for (let i = 0; i < cookies.length; i++) {
+                    let cookie = cookies[i].split("=")
                     if (cookie[0] === name) {
                         return decodeURIComponent(cookie[1])
                     }
@@ -45,11 +45,11 @@
             }
 
             function showCookies() {
-                var email = getCookie("email")
-                var firstname = getCookie("firstname")
-                var displayText = `Email: ${email} - Firstname: ${firstname}`
+                let email = getCookie("email")
+                let firstname = getCookie("firstname")
+                let displayText = `Email: ${email} - Firstname: ${firstname}`
 
-                var paragraph = document.createElement("p")
+                let paragraph = document.createElement("p")
                 paragraph.textContent = displayText
                 document.body.appendChild(paragraph)
             }

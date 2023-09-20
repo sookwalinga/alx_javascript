@@ -21,10 +21,10 @@
 
         <script>
             function setCookies() {
-                var firstName = document.getElementById("firstname").value
-                var email = document.getElementById("email").value
+                let firstName = document.getElementById("firstname").value
+                let email = document.getElementById("email").value
 
-                var expirationDate = new Date()
+                let expirationDate = new Date()
                 expirationDate.setDate(expirationDate.getDate() + 10)
 
                 document.cookie = "firstname=" + firstName + "; expires=" + expirationDate.toUTCString()
@@ -32,15 +32,15 @@
             }
 
             function showCookies() {
-                var cookies = document.cookie.split("; ")
-                var cookieText = "Cookies:<br>"
+                let cookies = document.cookie.split("; ")
+                let cookieText = "Cookies:<br>"
 
                 for (const cookie of cookies) {
                     const [key, value] = cookie.split("=")
                     cookieText += `${key}: ${value}<br>`
                 }
 
-                var paragraph = document.createElement("p")
+                let paragraph = document.createElement("p")
                 paragraph.innerHTML = cookieText
                 document.body.appendChild(paragraph)
             }

@@ -22,11 +22,11 @@
 
         <script>
             function setCookiesAndShowWelcomeMessage() {
-                var firstName = document.getElementById("firstname").value
-                var email = document.getElementById("email").value
+                let firstName = document.getElementById("firstname").value
+                let email = document.getElementById("email").value
 
                 // Calculate the expiration date (10 days from now)
-                var expirationDate = new Date()
+                let expirationDate = new Date()
                 expirationDate.setDate(expirationDate.getDate() + 10)
 
                 // Set the cookies with js-cookie
@@ -37,10 +37,10 @@
             }
 
             function showForm() {
-                var welcomeMessage = document.getElementById("welcomeMessage")
+                let welcomeMessage = document.getElementById("welcomeMessage")
                 welcomeMessage.innerHTML = ''
 
-                var loginForm = document.getElementById("loginForm")
+                let loginForm = document.getElementById("loginForm")
                 loginForm.style.display = "block"
             }
 
@@ -53,14 +53,14 @@
             }
 
             function showWelcomeMessageOrForm() {
-                var firstname = Cookies.get("firstname")
-                var welcomeMessage = document.getElementById("welcomeMessage")
-                var loginForm = document.getElementById("loginForm")
+                let firstname = Cookies.get("firstname")
+                let welcomeMessage = document.getElementById("welcomeMessage")
+                let loginForm = document.getElementById("loginForm")
 
                 if (firstname) {
-                    var welcomeText = document.createElement("h1")
+                    let welcomeText = document.createElement("h1")
                     welcomeText.textContent = `Welcome ${firstname} (logout)`
-                    var logoutLink = document.createElement("a")
+                    let logoutLink = document.createElement("a")
                     logoutLink.href = "#"
                     logoutLink.textContent = "(logout)"
                     logoutLink.style.fontStyle = "italic"
