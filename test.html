@@ -2,15 +2,28 @@
 <html>
 
     <head>
-        <title>DOM Introduction</title>
+        <title>Creating and Removing Elements</title>
     </head>
 
     <body>
-        <p id="myParagraph">This is a paragraph.</p>
-
+        <div id="container"></div>
         <script>
-            const para = document.getElementById('myParagraph')
-            para.innerText = "I successfully updated this paragraph with javascript";
+            const container = document.getElementById('container')
+
+            const newPara = document.createElement('p')
+            newPara.innerText = 'New paragraph'
+            container.appendChild(newPara)
+
+            const btn = document.createElement('button')
+            btn.innerText = 'Hide/Show'
+            container.appendChild(btn)
+            btn.addEventListener('click', () => {
+                if (newPara.style.display) {
+                    newPara.style.display = ''
+                } else {
+                    newPara.style.display = 'none'
+                }
+            })
         </script>
     </body>
 
