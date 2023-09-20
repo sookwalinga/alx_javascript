@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>0-Index</title>
+        <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+    </head>
+
+    <body>
+        <h1>Login on Website</h1>
+
+        <div id="loginForm" style="display: none;">
+            <h2>Login Form</h2>
+            <label for="firstname">First Name:</label>
+            <input type="text" id="firstname"><br><br>
+            <label for="email">Email:</label>
+            <input type="text" id="email"><br><br>
+            <button onclick="setCookiesAndShowWelcomeMessage()">Log me in</button>
+        </div>
+
+        <div id="welcomeMessage"></div>
+
+        <script>
+            function setCookiesAndShowWelcomeMessage() {
+                var firstName = document.getElementById("firstname").value
+                var email = document.getElementById("email").value
+
+                // Calculate the expiration date (10 days from now)
+                var expirationDate = new Date()
+                expirationDate.setDate(expirationDate.getDate() + 10)
+
+                // Set the cookies with js-cookie
+                Cookies.set("firstname", firstName, { expires: expirationDate })
+                Cookies.set("email", email, { expires: expirationDate })
+
+                showWelcomeMessageOrForm()
+            }
+
+            function showForm() {
+                var welcomeMessage = document.getElementById("welcomeMessage")
+                welcomeMessage.innerHTML = ''
+
+                var loginForm = document.getElementById("loginForm")
+                loginForm.style.display = "block"
+            }
+
+            function deleteCookiesAndShowForm() {
+                // Delete cookies with js-cookie
+                Cookies.remove("firstname")
+                Cookies.remove("email")
+
+                showForm()
+            }
+
+            function showWelcomeMessageOrForm() {
+                var firstname = Cookies.get("firstname")
+                var welcomeMessage = document.getElementById("welcomeMessage")
+                var loginForm = document.getElementById("loginForm")
+
+                if (firstname) {
+                    var welcomeText = document.createElement("h1")
+                    welcomeText.textContent = `Welcome ${firstname} (logout)`
+                    var logoutLink = document.createElement("a")
+                    logoutLink.href = "#"
+                    logoutLink.textContent = "(logout)"
+                    logoutLink.style.fontStyle = "italic"
+                    logoutLink.style.marginLeft = "10px"
+
+                    logoutLink.addEventListener("click", function () {
+                        deleteCookiesAndShowForm()
+                        welcomeMessage.innerHTML = ''
+                    })
+
+                    welcomeText.appendChild(logoutLink)
+                    welcomeMessage.appendChild(welcomeText)
+
+                    loginForm.style.display = "none"
+                } else {
+                    showForm()
+                }
+            }
+            showWelcomeMessageOrForm();
+        </script>
+    </body>
+
+</html>
