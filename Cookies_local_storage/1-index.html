@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
     <head>
         <meta charset="UTF-8" />
@@ -35,9 +35,9 @@
                 var cookies = document.cookie.split("; ")
                 var cookieText = "Cookies:<br>"
 
-                for (var i = 0; i < cookies.length; i++) {
-                    var cookie = cookies[i].split("=")
-                    cookieText += cookie[0] + ": " + cookie[1] + "<br>"
+                for (const cookie of cookies) {
+                    const [key, value] = cookie.split("=")
+                    cookieText += `${key}: ${value}<br>`
                 }
 
                 var paragraph = document.createElement("p")
