@@ -1,3 +1,4 @@
+// @ts-nocheck
 const passwordForm = document.getElementById('passwordForm')
 const errorElement = document.getElementById('error')
 

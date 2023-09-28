@@ -1,3 +1,4 @@
+// @ts-nocheck
 // Get references to the form elements
 const dynamicForm = document.getElementById('dynamicForm')
 const numFieldsSelect = document.getElementById('numFields')

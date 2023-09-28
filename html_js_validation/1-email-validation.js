@@ -1,3 +1,4 @@
+// @ts-nocheck
 // Get references to the form and error message elements
 const emailForm = document.getElementById('emailForm')
 const emailInput = document.getElementById('email')

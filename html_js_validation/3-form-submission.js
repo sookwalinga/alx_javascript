@@ -1,3 +1,4 @@
+// @ts-nocheck
 // Get references to the form and form fields
 const submitForm = document.getElementById('submitForm')
 const nameInput = document.getElementById('name')
